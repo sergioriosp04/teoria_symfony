@@ -1,2 +1,16 @@
-<h1> {{ title }}</h1>
-<p>tu nombre es: {{ name }}</p>
+{% extends 'layouts/plantillaMaestra.html.twig' %}
+
+
+{% block title %} animales {% endblock %}
+
+{% block cabecera %}
+    {{ parent () }}
+    <h>animales</h>
+{% endblock %}
+
+{% block contenido %}
+    <hr>
+    <h1> {{ title }}</h1>
+    <p>tu nombre es: {{ name }}</p>
+    <hr>
+{% endblock %}

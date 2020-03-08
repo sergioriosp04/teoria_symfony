@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} Inico {% endblock %} - curso de symfony </title>
+</head>
+<body>
+
+    <div id="header">
+        {% block cabecera %}
+            <h1> symfony</h1>
+        {%  endblock %}
+    </div>
+
+    <section id="contenido">
+        {% block contenido %}
+            <h1> contenido por defecto</h1>
+        {%  endblock %}
+    </section>
+
+    <footer>
+        this is the footer
+    </footer>
+
+</body>
+</html>

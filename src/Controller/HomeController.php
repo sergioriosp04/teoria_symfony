@@ -23,7 +23,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/home/animales/{name?sergio}", name="animales", methods={"POST"})
+     * @Route("/home/animales/{name?sergio}", name="animales", methods={"POST", "GET"})
      */
     public function animals($name){
         $title = 'bienvenido a la pagina de animales';
