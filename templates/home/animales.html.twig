@@ -5,12 +5,46 @@
 
 {% block cabecera %}
     {{ parent () }}
-    <h>animales</h>
+
+    <h1>hola {{name}}</h1>
 {% endblock %}
 
 {% block contenido %}
-    <hr>
+    {#<hr>
     <h1> {{ title }}</h1>
     <p>tu nombre es: {{ name }}</p>
+    <hr>#}
+
+{#    crear e imprimit variable #}
+    {% set perro = 'pastor ganadero' %}
+    <p>{{ perro }}</p>
+
+{#    condicionales   #}
+    {% if perro == 'pastor ganadero' %}
+        <h2> cuidado con el perro</h2>
+    {% else %}
+        <h2> puede jugar con el</h2>
+    {% endif %}
+
+{#    bucles          #}
+    {% if animales|length >= 0 %}
+        <ul>
+            {% for animal in animales %}
+            <li>{{ animal }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>np hay animales</p>
+    {% endif %}
     <hr>
+{#    funciones predefinidas twig: algunas de las mas usuadas    #}
+    {{ min ([9,6,8,1,2,0]) }} </br>
+    {{ max ([9,6,8,1,2,0]) }} </br>
+    {{ random(animales) }}
+    {% for i in range(0,100, 20) %}
+            {{ i }} <br>
+    {% endfor %}
+
+
+
 {% endblock %}

@@ -27,9 +27,11 @@ class HomeController extends AbstractController
      */
     public function animals($name){
         $title = 'bienvenido a la pagina de animales';
+        $animales = ["perro", "gato", "pajaro"];
         return $this->render('home/animales.html.twig',[
             'title' => $title,
-            'name' => $name
+            'name' => $name,
+            'animales' => $animales
         ]);
     }
 }
