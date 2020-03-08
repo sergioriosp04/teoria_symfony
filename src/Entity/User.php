@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity("email")
  */
 class User
 {
@@ -27,7 +30,8 @@ class User
     private $apellidos;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200, unique=true)
+     * @Assert\Email
      */
     private $email;
 
@@ -71,4 +75,26 @@ class User
 
         return $this;
     }
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Animal", mappedBy="user")
+     */
+    private $animal;
+
+    public function __construct()
+    {
+        $this->animal = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Animal[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->animal;
+    }
+
+    // addProduct() and removeProduct() were also added
 }
+

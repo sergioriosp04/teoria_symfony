@@ -42,6 +42,11 @@ class Animal
      */
     private $raza;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="animales")
+     */
+    private $user_id;
+
     public function getId(): ?int
     {
         return $this->id;
