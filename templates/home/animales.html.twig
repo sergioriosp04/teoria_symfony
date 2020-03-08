@@ -37,14 +37,7 @@
         <p>np hay animales</p>
     {% endif %}
     <hr>
-{#    funciones predefinidas twig: algunas de las mas usuadas    #}
-    {{ min ([9,6,8,1,2,0]) }} </br>
-    {{ max ([9,6,8,1,2,0]) }} </br>
-    {{ random(animales) }}
-    {% for i in range(0,100, 20) %}
-            {{ i }} <br>
-    {% endfor %}
-
+    {{ include('partials/funciones.html.twig', {"nombre": "sergio"}) }}
 
 
 {% endblock %}
