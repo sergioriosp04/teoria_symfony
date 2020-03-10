@@ -184,7 +184,7 @@ class AnimalController extends AbstractController
     }
 
     /**
-     * @Route("/animal/querybuilder", name="delete")
+     * @Route("/animal/querybuilder", name="queryBuilder")
      */
     public function queryBuilder(){
         //ejemplos de query builder
@@ -196,6 +196,18 @@ class AnimalController extends AbstractController
                             ->orderBy('a.id', 'DESC')
                             ->getQuery();
         $result = $qb->execute();
+        dump($result);die();
+    }
+
+    /**
+     * @Route("/animal/dqlEjemplo", name="dqlEjemplo")
+     */
+    public function dqlEjemplo(){
+        // ejemplo de consultas DQL
+        $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT a FROM App\Entity\Animal a WHERE a.raza = 'pastor ganadero australiano' ORDER BY a.id DESC";
+        $query = $em->createQuery($dql);
+        $result = $query->execute();
         dump($result);die();
     }
 
