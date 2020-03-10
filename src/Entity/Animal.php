@@ -47,6 +47,18 @@ class Animal
      */
     private $user_id;
 
+    public function getUser(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user_id = $user;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +99,5 @@ class Animal
 
         return $this;
     }
-
 
 }

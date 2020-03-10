@@ -90,11 +90,12 @@ class User
     /**
      * @return Collection|Animal[]
      */
-    public function getProducts(): Collection
+    public function getAnimals(): Collection
     {
         return $this->animal;
     }
 
     // addProduct() and removeProduct() were also added
+
 }
 
