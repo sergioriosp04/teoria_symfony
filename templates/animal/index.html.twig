@@ -11,10 +11,12 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/epayco/Escritorio/proyectosPersonales/curso-symfony/src/Controller/AnimalController.php'|file_link(0) }}">src/Controller/AnimalController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/epayco/Escritorio/proyectosPersonales/curso-symfony/templates/animal/index.html.twig'|file_link(0) }}">templates/animal/index.html.twig</a></code></li>
-    </ul>
+    {% for animal in animales %}
+        <ul>
+            <li>{{animal.id}}</li>
+            <li>{{animal.tipo}}</li>
+            <li>{{animal.raza}}</li>
+        </ul>
+    {% endfor %}
 </div>
 {% endblock %}
