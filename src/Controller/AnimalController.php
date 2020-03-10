@@ -182,4 +182,21 @@ class AnimalController extends AbstractController
         }
         return $this->resjson($data);
     }
+
+    /**
+     * @Route("/animal/querybuilder", name="delete")
+     */
+    public function queryBuilder(){
+        //ejemplos de query builder
+        // animales de raza pastor
+        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+        $qb = $animal_repo->createQueryBuilder('a')
+                            ->setParameter('raza', 'pastor ganadero australiano')
+                            ->andWhere("a.raza = :raza")
+                            ->orderBy('a.id', 'DESC')
+                            ->getQuery();
+        $result = $qb->execute();
+        dump($result);die();
+    }
+
 }
