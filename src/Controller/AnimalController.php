@@ -154,4 +154,32 @@ class AnimalController extends AbstractController
         // respuesta
         return $this->resjson($data);
     }
+
+    /**
+     * @Route("/animal/delete/{id}", name="delete")
+     */
+    public function delete($id){
+        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+        $animal = $animal_repo->findOneBy([
+            'id' => $id
+        ]);
+        if($animal && is_object($animal)){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($animal);
+            $em->flush();
+            $data = [
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'elimiando exitosamente',
+                'animal id' => $animal->getId()
+            ];
+        }else{
+            $data = [
+                'status' => 'error',
+                'code' => 404,
+                'message' => 'e',
+            ];
+        }
+        return $this->resjson($data);
+    }
 }
