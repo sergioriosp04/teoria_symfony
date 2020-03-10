@@ -116,4 +116,42 @@ class AnimalController extends AbstractController
 
         return $this->resjson($data);
     }
+
+    /**
+     * @Route("/animal/update/{id}", name="update")
+     */
+    public function update($id){
+        //cargar doctrine
+        $doctrine = $this->getDoctrine();
+        //cargar entity manager
+        $em = $doctrine->getManager();
+        //cargar repo entidad animal
+        $animal_repo = $doctrine->getRepository(Animal::class);
+        // find para sacar objeto
+        $animal = $animal_repo->find($id);
+        //comprobar si el objeto llega
+        if(!$animal){
+            $data = [
+                'status' => 'error',
+                'code' => 404,
+                'message' => 'el animal con id:'. $id . 'no existe',
+            ];
+        }else{
+            //setear los nuevos datos
+            $animal->setTipo("perro $id");
+            $animal->setColor('verde');
+            //persisitir en docrine el objeto
+            $em->persist($animal);
+            // flush para guardar
+            $em->flush();
+            $data = [
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'actualizacion con exito',
+                'animal_id' => $animal->getId()
+            ];
+        }
+        // respuesta
+        return $this->resjson($data);
+    }
 }
