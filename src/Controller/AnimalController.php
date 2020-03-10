@@ -37,7 +37,7 @@ class AnimalController extends AbstractController
     }
 
     /**
-     * @Route("/animal/save", name="save")
+     * @Route("/animal/save", name="save", methods={"POST"})
      */
     public function save(){
         //traer ususario
@@ -62,6 +62,34 @@ class AnimalController extends AbstractController
             'message' => 'se agrego el animal correctamente',
             'animal_id' => $animal->getId()
         ];
+
+        return $this->resjson($data);
+    }
+
+    /**
+     * @Route("/animal/show/{id}", name="animal")
+     */
+    public function animal($id){
+        //cargar repositorio
+        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+        //consulta find
+        $animal = $animal_repo->find($id);
+        //comprobar
+        if(!$animal){
+            $data = [
+                'status' => 'error',
+                'code' => 404,
+                'message' => 'el animal con id:'. $id . 'no existe',
+            ];
+        }else{
+            $data = [
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'animal encontrado satisfactoriamente',
+                'id' => $animal->getId()
+            ];
+        }
+
 
         return $this->resjson($data);
     }

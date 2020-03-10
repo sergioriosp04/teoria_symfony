@@ -76,10 +76,10 @@ class User
         return $this;
     }
 
-
+/*
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Animal", mappedBy="user")
-     */
+     *
     private $animal;
 
     public function __construct()
@@ -89,11 +89,11 @@ class User
 
     /**
      * @return Collection|Animal[]
-     */
+     *
     public function getAnimals(): Collection
     {
         return $this->animal;
-    }
+    }*/
 
     // addProduct() and removeProduct() were also added
 
