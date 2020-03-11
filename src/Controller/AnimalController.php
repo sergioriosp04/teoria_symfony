@@ -196,7 +196,10 @@ class AnimalController extends AbstractController
                             ->orderBy('a.id', 'DESC')
                             ->getQuery();
         $result = $qb->execute();
-        dump($result);die();
+
+        // ENSAYANDO EL METODO QUE CREE EN EL REPOSITORIO PARA CONSULTA PERSNALIZADA
+        $animals = $animal_repo->getAnimalesOrderById('DESC');
+        dump($animals);die();
     }
 
     /**
