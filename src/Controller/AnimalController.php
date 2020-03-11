@@ -211,4 +211,17 @@ class AnimalController extends AbstractController
         dump($result);die();
     }
 
+    /**
+     * @Route("/animal/sqlEjemplo", name="sqlEjemplo")
+     */
+    public function sqlEjemplo(){
+        //ejemplo de consulta SQL
+        $connection = $this->getDoctrine()->getConnection();
+        $sql = "SELECT * FROM animales ORDER BY id DESC";
+        $prepare = $connection->prepare($sql);
+        $prepare->execute();
+        $result = $prepare->fetchAll();
+        dump($result);die();
+    }
+
 }
